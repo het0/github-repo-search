@@ -26,7 +26,7 @@ const useEventListener = <
   target: EventTarget | undefined,
   type: KW | KH | KM,
   listener: EventListenerOrEventListenerObject,
-  options: AddEventListenerOptions | boolean = undefined
+  options?: AddEventListenerOptions | boolean,
 ): void => {
   useEffect(() => {
     // in a Node environment, exit early
