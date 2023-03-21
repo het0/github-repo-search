@@ -26,7 +26,7 @@ const useEventListener = <
   target: EventTarget | undefined,
   type: KW | KH | KM,
   listener: EventListenerOrEventListenerObject,
-  options?: AddEventListenerOptions | boolean,
+  options?: AddEventListenerOptions | boolean
 ): void => {
   useEffect(() => {
     // in a Node environment, exit early
@@ -34,10 +34,10 @@ const useEventListener = <
       return;
     }
 
-    target.addEventListener(type, listener, options);
+    target.addEventListener(type, listener, options ?? {});
 
     // return a callback, which is called on unmount
-    return () => target.removeEventListener(type, listener, options);
+    return () => target.removeEventListener(type, listener, options ?? {});
   }, [listener, options, target, type]);
 };
 
